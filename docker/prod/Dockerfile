@@ -2,7 +2,7 @@ FROM node:14-alpine AS builder
 WORKDIR /app
 COPY . .
 COPY package.json yarn.lock ./
-RUN yarn install
+RUN yarn install --network-timeout 100000
 RUN yarn build
 
 FROM node:14-alpine
